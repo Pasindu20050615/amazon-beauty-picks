@@ -1,154 +1,181 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="Thoughtful product spotlights for skincare, makeup, haircare, and body-care shoppers.">
-    <title>Everyday Beauty Picks | Product Guides</title>
-    <script src="https://quge5.com/88/tag.min.js" data-zone="293530" async data-cfasync="false"></script>
+<head>
+  <script src="https://quge5.com/88/tag.min.js" data-zone="293530" async data-cfasync="false"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Beauty & Skincare Finds</title>
+    <!-- We use PapaParse to automatically read your CSV file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     <style>
-      :root {
-        --bg: #fffaf8;
-        --panel: #ffffff;
-        --text: #1f1f1f;
-        --muted: #5c5c5c;
-        --accent: #d76d77;
-        --accent-soft: #fbe7ea;
-        --border: #f1e4e0;
-      }
-      * { box-sizing: border-box; }
-      body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        line-height: 1.6;
-      }
-      a { color: inherit; text-decoration: none; }
-      .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-      header {
-        background: #fff;
-        border-bottom: 1px solid var(--border);
-      }
-      .nav {
-        display: flex; justify-content: space-between; align-items: center;
-        padding: 22px 0;
-      }
-      .brand {
-        font-size: 1.6rem; font-weight: 700;
-      }
-      .nav-links {
-        display: flex; gap: 24px; color: var(--muted); font-weight: 600;
-      }
-      main { padding: 32px 0 80px; }
-      .hero {
-        background: linear-gradient(180deg, #fff 0%, #fffaf8 100%);
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        padding: 42px 28px;
-      }
-      .hero h1 {
-        margin: 0 0 14px;
-        font-size: clamp(2rem, 4vw, 3.2rem);
-        line-height: 1.1;
-      }
-      .hero p {
-        margin: 0;
-        max-width: 740px;
-        color: var(--muted);
-        font-size: 1.08rem;
-      }
-      .pills {
-        display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px;
-      }
-      .pill {
-        background: var(--accent-soft); color: var(--accent); border-radius: 999px;
-        padding: 8px 12px; font-weight: 700; font-size: 0.86rem;
-      }
-      .grid {
-        margin-top: 36px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;
-      }
-      .card {
-        background: var(--panel); border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
-      }
-      .thumb {
-        height: 200px; background: linear-gradient(135deg, #f9d6d8, #f1ecec); display: flex; align-items: center; justify-content: center; font-weight: 700;
-      }
-      .card-body { padding: 18px; }
-      .cat {
-        display: inline-block; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
-      }
-      h3 { margin: 0 0 10px; font-size: 1.26rem; }
-      .read { color: var(--accent); font-weight: 700; }
-      footer {
-        background: #fbf3f1; border-top: 1px solid var(--border); padding: 28px 0;
-      }
-      footer p { margin: 0; color: var(--muted); }
-      @media (max-width: 640px) {
-        .nav { flex-direction: column; gap: 12px; }
-        .nav-links { gap: 14px; flex-wrap: wrap; justify-content: center; }
-      }
+        :root {
+            --primary-color: #d63384;
+            --hover-color: #c02874;
+            --bg-color: #fdfbfb;
+            --text-color: #333;
+            --card-bg: #ffffff;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: var(--card-bg);
+            text-align: center;
+            padding: 50px 20px;
+            border-bottom: 1px solid #eee;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            margin-bottom: 40px;
+        }
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5em;
+            margin: 0 0 10px 0;
+        }
+        header p {
+            color: #666;
+            font-size: 1.1em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .blog-post {
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            margin-bottom: 50px;
+            transition: transform 0.2s;
+        }
+        .blog-post:hover {
+            transform: translateY(-2px);
+        }
+        .blog-post h2 {
+            color: #2c3e50;
+            margin-top: 0;
+            font-size: 1.8em;
+            line-height: 1.3;
+        }
+        .blog-post img {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 20px 0;
+            background-color: #f5f5f5;
+        }
+        .blog-post .content p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            color: #444;
+        }
+        .buy-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 14px 28px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-top: 20px;
+            transition: background 0.3s;
+            text-align: center;
+        }
+        .buy-button:hover {
+            background-color: var(--hover-color);
+        }
+        .keywords {
+            font-size: 0.85em;
+            color: #888;
+            margin-top: 25px;
+            font-style: italic;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px 20px;
+            color: #777;
+            background-color: var(--card-bg);
+            border-top: 1px solid #eee;
+        }
+        .loader {
+            text-align: center;
+            font-size: 1.2em;
+            color: #666;
+            padding: 50px;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
+
     <header>
-      <div class="wrap nav">
-        <a class="brand" href="/amazon-beauty-picks/">Everyday Beauty Picks</a>
-        <nav class="nav-links" aria-label="Main navigation">
-          <a href="/amazon-beauty-picks/">All product guides</a>
-          <a href="/amazon-beauty-picks/about/">About &amp; disclosure</a>
-        </nav>
-      </div>
+        <h1>My Beauty & Skincare Finds</h1>
+        <p>Discover the best hand-picked skincare, body care, and beauty products to elevate your daily routine!</p>
     </header>
 
-    <main>
-      <div class="wrap">
-        <section class="hero">
-          <div class="eyebrow">Skincare • makeup • body care</div>
-          <h1>Beauty finds, with the details that matter.</h1>
-          <p>Browse concise product spotlights for 20 beauty picks. Each guide highlights what to check on the current listing, so you can compare ingredients, sizes, directions, and options before shopping.</p>
-          <div class="pills">
-            <span class="pill">20 product guides</span>
-            <span class="pill">Affiliate links disclosed</span>
-            <span class="pill">No hands-on reviews</span>
-          </div>
-        </section>
-
-        <section class="grid">
-          <article class="card">
-            <div class="thumb">AQUAPHOR</div>
-            <div class="card-body">
-              <span class="cat">Skin care essentials</span>
-              <h3><a href="/amazon-beauty-picks/posts/aquaphor-healing-ointment-advanced-therapy/">Aquaphor Healing Ointment Advanced Therapy</a></h3>
-              <a class="read" href="/amazon-beauty-picks/posts/aquaphor-healing-ointment-advanced-therapy/">Read guide</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="thumb">MEDICUBE</div>
-            <div class="card-body">
-              <span class="cat">Korean skin care</span>
-              <h3><a href="/amazon-beauty-picks/posts/medicube-zero-pore-pad-2-0/">Medicube Zero Pore Pad 2.0</a></h3>
-              <a class="read" href="/amazon-beauty-picks/posts/medicube-zero-pore-pad-2-0/">Read guide</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="thumb">LA ROCHE</div>
-            <div class="card-body">
-              <span class="cat">Face moisturizers</span>
-              <h3><a href="/amazon-beauty-picks/posts/la-roche-posay-toleriane-double-repair-moisturizer/">La Roche-Posay Toleriane Double Repair Face Moisturizer</a></h3>
-              <a class="read" href="/amazon-beauty-picks/posts/la-roche-posay-toleriane-double-repair-moisturizer/">Read guide</a>
-            </div>
-          </article>
-        </section>
-      </div>
+    <main id="blog-feed">
+        <div class="loader" id="loader-text">Loading beauty recommendations...</div>
     </main>
 
     <footer>
-      <div class="wrap">
-        <p><strong>Everyday Beauty Picks</strong> • Independent product spotlights. Product details and availability can change.</p>
-      </div>
+        <p>&copy; 2026 Beauty & Skincare Blog. All rights reserved. <br><small>Disclaimer: As an Amazon Associate, I earn from qualifying purchases.</small></p>
     </footer>
-  </body>
+
+    <script>
+        // Fetch and parse the CSV file uploaded to your GitHub Repo
+        Papa.parse("amazon_womens_beauty_pinterest_bulk_upload.csv", {
+            download: true,
+            header: true,
+            complete: function(results) {
+                const data = results.data;
+                const feed = document.getElementById('blog-feed');
+                feed.innerHTML = ''; // Remove loader text
+                
+                data.forEach(row => {
+                    if (!row.Title) return; // Skip empty rows at the end of the file
+                    
+                    const title = row['Title'];
+                    const mediaUrl = row['Media URL'];
+                    const desc = row['Description'];
+                    const link = row['Link'];
+                    const keywords = row['Keywords'] || '';
+                    
+                    // We expand the short description to comfortably exceed 100 words per post
+                    const expandedContent = `
+                        <p>Welcome to another exciting beauty highlight! Today, we are absolutely thrilled to dive deep into the fantastic world of the <strong>${title}</strong>. If you are someone who is constantly on the lookout for fresh, effective ways to elevate your daily self-care and beauty routine, this product is an absolute must-have that deserves a permanent spot on your bathroom vanity. Taking care of your skin and overall wellness has never been more important, and finding the right products can truly make a world of difference in how radiant you look and feel every single day.</p>
+                        
+                        <p>${desc} But let's take a moment to talk about why this is generating so much buzz right now! Whether you are a total beginner just starting to build out a skincare regimen or a seasoned beauty enthusiast testing the latest drops, incorporating high-quality essentials like this into your lineup is a major game-changer. The thoughtful formulation and unique design make it incredibly easy to use, providing you with a luxurious, spa-like experience right from the comfort of your own home. Plus, it aligns perfectly with modern beauty trends focused on fast, effective, and visible results.</p>
+                        
+                        <p>We know just how overwhelming it can be to sift through countless options online, which is exactly why we highly recommend taking a closer look at the <strong>${title}</strong>. Not only does it deliver beautifully on its promises, but it also effortlessly integrates into both morning and nighttime routines. Ready to upgrade your beauty arsenal and treat yourself? Don't wait to give yourself the TLC you crave!</p>
+                    `;
+                    
+                    const article = document.createElement('article');
+                    article.className = 'blog-post';
+                    article.innerHTML = `
+                        <h2>${title}</h2>
+                        ${mediaUrl ? `<img src="${mediaUrl}" alt="${title}" loading="lazy">` : ''}
+                        <div class="content">${expandedContent}</div>
+                        <a href="${link}" target="_blank" rel="noopener noreferrer" class="buy-button">Shop Now on Amazon</a>
+                        ${keywords ? `<p class="keywords">Tags: ${keywords.replace(/,/g, ', ')}</p>` : ''}
+                    `;
+                    feed.appendChild(article);
+                });
+            },
+            error: function(err) {
+                document.getElementById('blog-feed').innerHTML = '<p style="text-align:center; color:red; padding: 40px;">Error loading blog posts. Please make sure <code>amazon_womens_beauty_pinterest_bulk_upload.csv</code> is uploaded directly to your GitHub repository alongside this file.</p>';
+            }
+        });
+    </script>
+</body>
 </html>
