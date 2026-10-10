@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pasindu20050615.github.io/amazon-beauty-picks/sitemap.xml
